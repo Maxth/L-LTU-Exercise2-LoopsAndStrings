@@ -26,7 +26,7 @@ Vi vill även få möjlighet att kunna räkna ut priset för ett helt sällskap.
 - Samt totalkostnad för hela sällskapet
 
 ### Menyval 2: Upprepa tio gånger
-För att använda en annan typ av iteration skall ni här implementera en for-loop. Detta ska ni skapa för att upprepa något en användare skriver in tio gånger. Det ska alltså inte skrivas via tio stycken ”Console.Write(Input);” utan via en loop som gör detta tio gånger.Förattkommatilldenhärfunktionenskallniläggatillettcase för”3”ier huvudmeny samt text som förklarar detta.
+För att använda en annan typ av iteration skall ni här implementera en for-loop. Detta ska ni skapa för att upprepa något en användare skriver in tio gånger. Det ska alltså inte skrivas via tio stycken ”Console.Write(Input);” utan via en loop som gör detta tio gånger. För att komma till den här funktionen skall ni lägga till ett case för”3” i er huvudmeny samt text som förklarar detta.
 
 Händelseförloppet visas nedan:
 1. Användaren anger en godtycklig text
