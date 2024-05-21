@@ -1,0 +1,15 @@
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/bin/Debug/net8.0/LoopsAndStrings
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/bin/Debug/net8.0/LoopsAndStrings.deps.json
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/bin/Debug/net8.0/LoopsAndStrings.runtimeconfig.json
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/bin/Debug/net8.0/LoopsAndStrings.dll
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/bin/Debug/net8.0/LoopsAndStrings.pdb
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/obj/Debug/net8.0/LoopsAndStrings.GeneratedMSBuildEditorConfig.editorconfig
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/obj/Debug/net8.0/LoopsAndStrings.AssemblyInfoInputs.cache
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/obj/Debug/net8.0/LoopsAndStrings.AssemblyInfo.cs
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/obj/Debug/net8.0/LoopsAndStrings.csproj.CoreCompileInputs.cache
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/obj/Debug/net8.0/LoopsAndStrings.sourcelink.json
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/obj/Debug/net8.0/LoopsAndStrings.dll
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/obj/Debug/net8.0/refint/LoopsAndStrings.dll
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/obj/Debug/net8.0/LoopsAndStrings.pdb
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/obj/Debug/net8.0/LoopsAndStrings.genruntimeconfig.cache
+/Users/maxth/lexicon_ltu/LoopsAndStrings/LoopsAndStrings/obj/Debug/net8.0/ref/LoopsAndStrings.dll

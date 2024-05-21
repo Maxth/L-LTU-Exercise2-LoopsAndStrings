@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LoopsAndStrings")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a1c733cb6a45e2f4592b79e7edab0b42a18136d")]
 [assembly: System.Reflection.AssemblyProductAttribute("LoopsAndStrings")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LoopsAndStrings")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
