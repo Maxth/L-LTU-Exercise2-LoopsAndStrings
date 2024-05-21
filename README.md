@@ -22,8 +22,8 @@ För att göra detta skall ni använda er av en nästlad if-sats. Det skall ske 
 7. Annars skall programmet skriva ut: Standardpris: 120kr
 
 Vi vill även få möjlighet att kunna räkna ut priset för ett helt sällskap. Lägg till det alternativet i huvudmenyn (ett case “2”). Det är även ok att ha alternativet i en undermeny. Vi anger då först hur många vi är som ska gå på bio. Frågar sedan efter ålder på var och en och skriver sedan ut en sammanfattning i konsolen som ska innehålla följande:
-● Antal personer
-● Samt totalkostnad för hela sällskapet
+- Antal personer
+- Samt totalkostnad för hela sällskapet
 
 ### Menyval 2: Upprepa tio gånger
 För att använda en annan typ av iteration skall ni här implementera en for-loop. Detta ska ni skapa för att upprepa något en användare skriver in tio gånger. Det ska alltså inte skrivas via tio stycken ”Console.Write(Input);” utan via en loop som gör detta tio gånger.Förattkommatilldenhärfunktionenskallniläggatillettcase för”3”ier huvudmeny samt text som förklarar detta.
