@@ -1,9 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
-
-using System.Xml;
-
 while (true)
 {
     Log("\nHello! You will navigate through this program by entering different integers.");
@@ -13,7 +10,7 @@ while (true)
     Log("3. Repeat input 10 times");
     Log("4. What's the third word in the sentence?");
 
-    string? input = Console.ReadLine();
+    string input = AskForString("");
 
     switch (input)
     {
@@ -42,13 +39,12 @@ void PrintThirdWordInSentence()
 {
     while (true)
     {
-        Log("Enter a sentence of at least three words please:");
-        string? input = Console.ReadLine();
+        string input = AskForString("Enter a sentence of at least three words please:");
 
         //To accomodate for several whitespaces in a row,
         //we use the Split method's option to remove all empty entries in the resulting array.
         //For further reference see https://learn.microsoft.com/en-us/dotnet/api/system.stringsplitoptions?view=net-8.0&redirectedfrom=MSDN
-        if (input != null && input.Split(" ", StringSplitOptions.RemoveEmptyEntries).Length > 2)
+        if (input.Split(" ", StringSplitOptions.RemoveEmptyEntries).Length > 2)
         {
             Log(
                 $"The third word in that sentence is: {input.Split(" ", StringSplitOptions.RemoveEmptyEntries)[2]}"
@@ -64,41 +60,27 @@ void PrintThirdWordInSentence()
 
 void RepeatInputTenTimes()
 {
-    while (true)
+    string input = AskForString("Enter something to be repeated 10 times:");
+
+    string output = "";
+    for (int i = 0; i < 10; i++)
     {
-        Log("Enter something to be repeated 10 times:");
-        string? input = Console.ReadLine();
-
-        if (input != null && input.Length > 0)
-        {
-            string output = "";
-            for (int i = 0; i < 10; i++)
-            {
-                output += $" {input}";
-            }
-
-            Log(output);
-            break;
-        }
-        else
-        {
-            PrintInvalidInputFeedback(null);
-        }
+        output += $" {input}";
     }
+    Log(output);
 }
 
 void CalculateAndPrintGroupPrice()
 {
-    int totalPrice = 0;
+    uint totalPrice = 0;
     while (true)
     {
-        Log("How many persons in the group?");
-        string? input = Console.ReadLine();
-        if (int.TryParse(input, out int groupSize))
+        uint groupSize = AskForUint("How many persons in the group?");
+
         {
             if (groupSize < 1)
             {
-                PrintInvalidInputFeedback("You need to enter an integer larger than zero!");
+                PrintInvalidInputFeedback("You need to enter a number larger than zero!");
                 continue;
             }
             for (int i = 0; i < groupSize; i++)
@@ -115,71 +97,91 @@ void CalculateAndPrintGroupPrice()
 // We use the Boolean verbose to indicate if we should print out the price to the console (as requested in option 1),
 //or just return the ticket price in int (as we do in option 2). This way we can use the method for both options.
 //Also we pass the query into the method in order to make it suitable for the different options' circumstances.
-int CheckCinemaPrice(Boolean verbose, string query)
+uint CheckCinemaPrice(Boolean verbose, string query)
+{
+    uint age = AskForUint(query);
+
+    if (age < 5)
+    {
+        if (verbose)
+        {
+            Log("Child price: free");
+        }
+        return 0;
+    }
+    if (age < 20)
+    {
+        if (verbose)
+        {
+            Log("Youth price: 80 kr");
+        }
+        return 80;
+    }
+    if (age < 65)
+    {
+        if (verbose)
+        {
+            Log("Standard price: 120 kr");
+        }
+        return 120;
+    }
+    if (age < 101)
+    {
+        if (verbose)
+        {
+            Log("Retiree price: 90 kr");
+        }
+        return 90;
+    }
+    if (verbose)
+    {
+        Log("Elder price: free");
+    }
+    return 0;
+}
+
+string AskForString(string prompt)
 {
     while (true)
     {
-        Log(query);
+        Log(prompt);
         string? input = Console.ReadLine();
-        if (int.TryParse(input, out int age))
+        if (!String.IsNullOrWhiteSpace(input) && input.Length > 0)
         {
-            if (age < 0)
-            {
-                PrintInvalidInputFeedback("Age cannot be negative!");
-                continue;
-            }
-            if (age < 5)
-            {
-                if (verbose)
-                {
-                    Log("Child price: free");
-                }
-                return 0;
-            }
-            if (age < 20)
-            {
-                if (verbose)
-                {
-                    Log("Youth price: 80 kr");
-                }
-                return 80;
-            }
-            if (age < 65)
-            {
-                if (verbose)
-                {
-                    Log("Standard price: 120 kr");
-                }
-                return 120;
-            }
-            if (age < 101)
-            {
-                if (verbose)
-                {
-                    Log("Retiree price: 90 kr");
-                }
-                return 90;
-            }
-            if (verbose)
-            {
-                Log("Elder price: free");
-            }
-            return 0;
+            return input;
         }
         else
         {
-            PrintInvalidInputFeedback("You need to enter a positive integer!");
+            PrintInvalidInputFeedback(null);
+        }
+    }
+}
+
+uint AskForUint(string prompt)
+{
+    while (true)
+    {
+        string input = AskForString(prompt);
+
+        if (uint.TryParse(input, out uint result))
+        {
+            return result;
+        }
+        else
+        {
+            PrintInvalidInputFeedback("You need to enter a positive number!");
         }
     }
 }
 
 void PrintInvalidInputFeedback(string? feedback)
 {
-    Log($"Invalid input. {feedback ?? ""} Please try again!\n");
+    Log($"Invalid input.{feedback ?? ""} Please try again!\n");
 }
 
 //We isolate this into a separate method,
-//in case we later want to write the output to a file etc.
+//in case we later want to do something else,
+//like sending the string to a UI
 void Log(string output)
 {
     Console.WriteLine(output);
