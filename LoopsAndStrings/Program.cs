@@ -178,6 +178,8 @@ void PrintInvalidInputFeedback(string? feedback)
     Log($"Invalid input. {feedback ?? ""} Please try again!\n");
 }
 
+//We isolate this into a separate method,
+//in case we later want to write the output to a file etc.
 void Log(string output)
 {
     Console.WriteLine(output);
