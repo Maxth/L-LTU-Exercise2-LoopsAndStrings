@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
+using System.Text;
+
 while (true)
 {
     Log("\nHello! You will navigate through this program by entering different integers.");
@@ -10,7 +12,7 @@ while (true)
     Log("3. Repeat input 10 times");
     Log("4. What's the third word in the sentence?");
 
-    string input = AskForString("");
+    string input = AskForString();
 
     switch (input)
     {
@@ -18,7 +20,7 @@ while (true)
             Environment.Exit(0);
             break;
         case "1":
-            CheckCinemaPrice(true, "Enter the visitor's age please.");
+            CheckCinemaPrice("Enter the visitor's age please.", shouldLogPrice: true);
             break;
         case "2":
             CalculateAndPrintGroupPrice();
@@ -30,7 +32,7 @@ while (true)
             PrintThirdWordInSentence();
             break;
         default:
-            PrintInvalidInputFeedback(null);
+            PrintInvalidInputFeedback();
             break;
     }
 }
@@ -44,11 +46,10 @@ void PrintThirdWordInSentence()
         //To accomodate for several whitespaces in a row,
         //we use the Split method's option to remove all empty entries in the resulting array.
         //For further reference see https://learn.microsoft.com/en-us/dotnet/api/system.stringsplitoptions?view=net-8.0&redirectedfrom=MSDN
-        if (input.Split(" ", StringSplitOptions.RemoveEmptyEntries).Length > 2)
+        string[] words = input.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+        if (words.Length > 2)
         {
-            Log(
-                $"The third word in that sentence is: {input.Split(" ", StringSplitOptions.RemoveEmptyEntries)[2]}"
-            );
+            Log($"The third word in that sentence is: {words[2]}");
             break;
         }
         else
@@ -62,12 +63,12 @@ void RepeatInputTenTimes()
 {
     string input = AskForString("Enter something to be repeated 10 times:");
 
-    string output = "";
+    StringBuilder sb = new StringBuilder();
     for (int i = 0; i < 10; i++)
     {
-        output += $" {input}";
+        sb.Append($" {input}");
     }
-    Log(output);
+    Log(sb.ToString());
 }
 
 void CalculateAndPrintGroupPrice()
@@ -85,7 +86,7 @@ void CalculateAndPrintGroupPrice()
             }
             for (int i = 0; i < groupSize; i++)
             {
-                totalPrice += CheckCinemaPrice(false, $"Enter the age of person {i + 1}");
+                totalPrice += CheckCinemaPrice($"Enter the age of person {i + 1}");
             }
         }
         Log($"Number of people in the group: {groupSize}");
@@ -94,16 +95,16 @@ void CalculateAndPrintGroupPrice()
     }
 }
 
-// We use the Boolean verbose to indicate if we should print out the price to the console (as requested in option 1),
+// We use the bool shouldLogPrice to indicate if we should print out the price to the console (as requested in option 1),
 //or just return the ticket price in int (as we do in option 2). This way we can use the method for both options.
 //Also we pass the query into the method in order to make it suitable for the different options' circumstances.
-uint CheckCinemaPrice(Boolean verbose, string query)
+uint CheckCinemaPrice(string query, bool shouldLogPrice = false)
 {
     uint age = AskForUint(query);
 
     if (age < 5)
     {
-        if (verbose)
+        if (shouldLogPrice)
         {
             Log("Child price: free");
         }
@@ -111,7 +112,7 @@ uint CheckCinemaPrice(Boolean verbose, string query)
     }
     if (age < 20)
     {
-        if (verbose)
+        if (shouldLogPrice)
         {
             Log("Youth price: 80 kr");
         }
@@ -119,7 +120,7 @@ uint CheckCinemaPrice(Boolean verbose, string query)
     }
     if (age < 65)
     {
-        if (verbose)
+        if (shouldLogPrice)
         {
             Log("Standard price: 120 kr");
         }
@@ -127,20 +128,20 @@ uint CheckCinemaPrice(Boolean verbose, string query)
     }
     if (age < 101)
     {
-        if (verbose)
+        if (shouldLogPrice)
         {
             Log("Retiree price: 90 kr");
         }
         return 90;
     }
-    if (verbose)
+    if (shouldLogPrice)
     {
         Log("Elder price: free");
     }
     return 0;
 }
 
-string AskForString(string prompt)
+string AskForString(string prompt = "")
 {
     while (true)
     {
@@ -152,7 +153,7 @@ string AskForString(string prompt)
         }
         else
         {
-            PrintInvalidInputFeedback(null);
+            PrintInvalidInputFeedback();
         }
     }
 }
@@ -174,9 +175,9 @@ uint AskForUint(string prompt)
     }
 }
 
-void PrintInvalidInputFeedback(string? feedback)
+void PrintInvalidInputFeedback(string feedback = "")
 {
-    Log($"Invalid input.{feedback ?? ""} Please try again!\n");
+    Log($"Invalid input.{feedback} Please try again!\n");
 }
 
 //We isolate this into a separate method,
